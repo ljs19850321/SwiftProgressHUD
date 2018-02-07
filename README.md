@@ -14,17 +14,19 @@
 `SwiftProgressHUD` is an iOS drop-in class that displays a translucent HUD with an indicator and/or labels while work is being done in a background thread. The HUD is meant as a replacement for the undocumented, private `UIKit` `UIProgressHUD` with some additional features.
 
 ## Effect
-1 | 2 | 3
---- | --- | --- 
-<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6t5gc980g30br0o3ab0.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wdxzxfug30br0o3abc.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wejfdg2g30br0o3my5.gif" width="207" height="425" />
+<figure class="half">
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6t5gc980g30br0o3ab0.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wdxzxfug30br0o3abc.gif" width="165.6" height="340" />
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wejfdg2g30br0o3my5.gif" width="165.6" height="340" />
+<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fo6weu0uorg30br0o33z1.gif" width="165.6" height="340" />
+</figure>
+<figure class="half">
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wf2wodlg30br0o3gmi.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wfoyk63g30br0o3763.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wg3byerg30br0o3abs.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wggr4qfg30br0o340d.gif" width="165.6" height="340" />
 
-4 | 5 | 6
----- | --- | ---
-<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fo6weu0uorg30br0o33z1.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wf2wodlg30br0o3gmi.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wfcaakwg30br0o3jsx.gif" width="207" height="425" />
-
-7 | 8 | 9
----- | --- | ---
-<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wfoyk63g30br0o3763.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wg3byerg30br0o3abs.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wggr4qfg30br0o340d.gif" width="207" height="425" />
+</figure>
 
 ## Requirements
 
@@ -86,7 +88,7 @@ SwiftProgressHUD.hideAllHUD()
 }
 ```
 
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/wait.gif" width="200" height="355" />
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6t5gc980g30br0o3ab0.gif" width="165.6" height="340" />
 
 
 加载成功时, 提示可以使用 `showSuccess`, 代码及效果如下:
@@ -99,7 +101,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 SwiftProgressHUD.hideAllHUD()
 }
 ```
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/success.gif" width="200" height="355" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wdxzxfug30br0o3abc.gif" width="165.6" height="340" />
 
 加载失败时, 提示可以使用 `showFail`, 代码及效果如下:
 
@@ -111,7 +113,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 SwiftProgressHUD.hideAllHUD()
 }
 ```
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/fail.gif" width="200" height="355" />
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wejfdg2g30br0o3my5.gif" width="165.6" height="340" />
 
 友情提示信息, 可以使用 `showInfo`, 代码及效果如下:
 
@@ -123,7 +125,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 SwiftProgressHUD.hideAllHUD()
 }
 ```
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/info.gif" width="200" height="355" />
+<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fo6weu0uorg30br0o33z1.gif" width="165.6" height="340" />
 
 错误Toast提示信息, 可以使用 `showOnlyText`, 代码及效果如下:
 
@@ -135,7 +137,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 SwiftProgressHUD.hideAllHUD()
 }
 ```
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/text.gif" width="200" height="355" />
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wf2wodlg30br0o3gmi.gif" width="165.6" height="340" />
 
 状态栏提示信息, 可以使用 `showOnStatusBar`, 代码及效果如下:
 
@@ -148,7 +150,7 @@ SwiftProgressHUD.hideAllHUD()
 }
 
 ```
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/status.gif" width="200" height="355" />
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wfcaakwg30br0o3jsx.gif" width="165.6" height="340" />
 
 加载动画提示, 可以使用 `showAnimationImages`, 代码及效果如下:
 
@@ -171,8 +173,9 @@ SwiftProgressHUD.hideAllHUD()
 }
 ```
 <figure class="half">
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/clearAnimation.gif" width="200" height="355" />
-<img src="https://github.com/YJManager/SwiftProgressHUD/blob/master/SwiftProgressHUDDemo/Resources/AnimationGifs/bgAnimation.gif" width="200" height="355" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wfoyk63g30br0o3763.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wg3byerg30br0o3abs.gif" width="165.6" height="340" />
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wggr4qfg30br0o340d.gif" width="165.6" height="340" />
 </figure>
 
 
