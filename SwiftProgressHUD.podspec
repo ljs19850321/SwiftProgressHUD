@@ -1,4 +1,4 @@
-version = "0.0.5";
+version = "0.0.6";
 
 Pod::Spec.new do |s|
 
@@ -6,13 +6,13 @@ Pod::Spec.new do |s|
     s.version      = version
     s.summary      = "SwiftProgressHUD simple HUD"
     s.description      = <<-DESC
-                        SwiftProgressHUD simple HUD 有兴趣的可以一起来搞。
+                        SwiftProgressHUD simple HUD 有兴趣的可以一起来搞
                         DESC
-    s.homepage     = "https://github.com/YJManager/SwiftProgressHUD"
+    s.homepage     = "https://github.com/stackhou/SwiftProgressHUD"
     s.license      = { :type => "MIT", :file => "LICENSE" }
     s.author       = { "houmanager" => "houmanager@Hotmail.com" }
     s.platform     = :ios, "8.0"
-    s.source       = { :git => "https://github.com/YJManager/SwiftProgressHUD.git", :tag => "#{version}"}
+    s.source       = { :git => "https://github.com/stackhou/SwiftProgressHUD.git", :tag => "#{version}"}
     s.source_files  = "SwiftProgressHUD/*.{swift}"
     s.requires_arc = true
 

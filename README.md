@@ -13,6 +13,19 @@
 
 `SwiftProgressHUD` is an iOS drop-in class that displays a translucent HUD with an indicator and/or labels while work is being done in a background thread. The HUD is meant as a replacement for the undocumented, private `UIKit` `UIProgressHUD` with some additional features.
 
+## Effect
+1 | 2 | 3
+--- | --- | --- 
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6t5gc980g30br0o3ab0.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wdxzxfug30br0o3abc.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wejfdg2g30br0o3my5.gif" width="207" height="425" />
+
+4 | 5 | 6
+---- | --- | ---
+<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fo6weu0uorg30br0o33z1.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wf2wodlg30br0o3gmi.gif" width="207" height="425" /> | <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fo6wfcaakwg30br0o3jsx.gif" width="207" height="425" />
+
+7 | 8 | 9
+---- | --- | ---
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wfoyk63g30br0o3763.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wg3byerg30br0o3abs.gif" width="207" height="425" /> | <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fo6wggr4qfg30br0o340d.gif" width="207" height="425" />
+
 ## Requirements
 
 `SwiftProgressHUD` works on iOS 8+ and requires ARC to build. It depends on the following Apple frameworks, which should already be included with most Xcode templates:

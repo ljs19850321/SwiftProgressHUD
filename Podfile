@@ -8,5 +8,6 @@ target 'SwiftProgressHUDDemo' do
   # Pods for SwiftProgressHUDDemo
   pod 'CommonParameter'  # 常用参数
   pod 'YJSwiftExtensions' # 常用扩展方法
+  pod 'lottie-ios'
 
 end

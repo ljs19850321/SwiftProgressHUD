@@ -3,39 +3,42 @@
 //  SwiftProgressHUDDemo
 //
 //  Created by YJHou on 2016/3/12.
-//  Copyright © 2016年 侯跃军. All rights reserved.
+//  Copyright © 2016年 houmanager@hotmail.com . All rights reserved.
 //
 
 import UIKit
 
+/// Current_Version：0.0.6
+/// Github: https://github.com/stackhou/SwiftProgressHUD
+
 private let yj_topBarTag: Int = 1001
 private let yj_showHUDBackColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
 
-/// 显示类型
+/// Display type
 public enum SwiftProgressHUDType{
-    case success    // 成功
-    case fail       // 失败
-    case info       // 圈感叹号
+    case success
+    case fail
+    case info
 }
 
-//------------------------------------ API START -------------------------------------
+//------------- API START -------------
 public class SwiftProgressHUD {
     
-    /// 设置 keyWindow 蒙版背景颜色
+    /// Set keyWindow Mask background color
     static public var hudBackgroundColor: UIColor = UIColor.clear {
         didSet{
             SwiftProgress.hudBackgroundColor = hudBackgroundColor
         }
     }
     
-    /// 设置手动隐藏次数
+    /// Setting the number of manual hides
     static public var hideHUDTaps: Int = 2 {
         didSet{
             SwiftProgress.hideHUDTaps = hideHUDTaps
         }
     }
     
-    /// 等待加载...
+    /// Wait for loading...
     @discardableResult
     public class func showWait() -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -44,7 +47,7 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 成功
+    /// Success
     @discardableResult
     public class func showSuccess(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -53,7 +56,7 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 错误
+    /// Fail
     @discardableResult
     public class func showFail(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -62,7 +65,7 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 提示信息
+    /// Hint information
     @discardableResult
     public class func showInfo(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -71,7 +74,7 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 提示自由类型(一般不用)
+    /// Prompt free type
     @discardableResult
     public class func show(_ text: String, type: SwiftProgressHUDType, autoClear: Bool, autoClearTime: Int = 3) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -80,7 +83,7 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 只显示文字
+    /// Only display text
     @discardableResult
     public class func showOnlyText(_ text: String) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -89,16 +92,17 @@ public class SwiftProgressHUD {
         return nil
     }
     
-    /// 状态栏提示
+    /// Status bar prompt
     @discardableResult
-    public class func showOnStatusBar(_ text: String, autoClear: Bool = true, autoClearTime: Int = 1, textColor: UIColor = UIColor.black, backgroundColor: UIColor = UIColor.white) -> UIWindow? {
+    public class func showOnNavigation(_ text: String, autoClear: Bool = true, autoClearTime: Int = 1, textColor: UIColor = UIColor.black, fontSize:CGFloat = 13, backgroundColor: UIColor = UIColor.white) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
-            return SwiftProgress.noticeOnStatusBar(text, autoClear: autoClear, autoClearTime: autoClearTime, textColor: textColor, backgroundColor: backgroundColor)
+            
+            return SwiftProgress.noticeOnNavigationBar(text, autoClear: autoClear, autoClearTime: autoClearTime, textColor: textColor, fontSize: fontSize, backgroundColor: backgroundColor)
         }
         return nil
     }
     
-    /// 动画图片数组
+    /// Animated picture array
     @discardableResult
     public class func showAnimationImages(_ imageNames: Array<UIImage>, timeMilliseconds: Int, backgroundColor: UIColor = UIColor.clear, scale: Double = 1.0) -> UIWindow? {
         if let _ = UIApplication.shared.keyWindow {
@@ -107,12 +111,12 @@ public class SwiftProgressHUD {
         return nil
     }
 
-    /// 清除所有
+    /// Clear all
     public class func hideAllHUD() {
         SwiftProgress.clear()
     }
 }
-//------------------------------------ API END -----------------------------------------
+//----------------- API END -------------------
 
 
 class SwiftProgress: NSObject {
@@ -142,16 +146,17 @@ class SwiftProgress: NSObject {
     }
     
     @discardableResult
-    static func noticeOnStatusBar(_ text: String, autoClear: Bool, autoClearTime: Int, textColor: UIColor, backgroundColor: UIColor) -> UIWindow{
-        let frame = UIApplication.shared.statusBarFrame
+    static func noticeOnNavigationBar(_ text: String, autoClear: Bool, autoClearTime: Int, textColor: UIColor, fontSize:CGFloat, backgroundColor: UIColor) -> UIWindow{
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let frame = CGRect(x: 0, y: 0, width: statusBarFrame.width, height: (statusBarFrame.height + 44))
         let window = UIWindow()
         window.rootViewController = UIViewController()
         window.backgroundColor = UIColor.clear
         let view = UIView()
         view.backgroundColor = backgroundColor
-        let label = UILabel(frame: frame)
+        let label = UILabel(frame: CGRect(x: 0, y: statusBarFrame.height, width: frame.width, height: (frame.height - 44)))
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: fontSize)
         label.textColor = textColor
         label.text = text
         view.addSubview(label)
@@ -193,7 +198,7 @@ class SwiftProgress: NSObject {
                 DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + .seconds(autoClearTime), execute: {
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0.3, animations: {
-                            /// 消失动画
+                            /// Vanishing animation
                             view.frame = CGRect(origin: origPoint, size: view.frame.size)
                         }, completion: { (b) in
                             let selector = #selector(SwiftProgress.hideNotice(_:))
@@ -221,7 +226,6 @@ class SwiftProgress: NSObject {
         tapGesture.numberOfTapsRequired = hideHUDTaps
         window.addGestureRecognizer(tapGesture)
         
-        /// 计算动画的Frame
         let imgViewFrame = CGRect(x: Double(frame.size.width) * (1 - scale) * 0.5, y: Double(frame.size.height) * (1 - scale) * 0.5, width: Double(frame.size.width) * scale, height: Double(frame.size.height) * scale)
         
         if imageNames.count > 0 {
@@ -387,7 +391,7 @@ class SwiftProgress: NSObject {
         return window
     }
     
-    /// 修复 window 没有移除
+    /// Repair window has not been removed
     static func hideNotice(_ sender: AnyObject) {
         if let window = sender as? UIWindow {
             
