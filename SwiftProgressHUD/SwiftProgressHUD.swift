@@ -9,7 +9,7 @@
 import UIKit
 
 /// Current_Version：0.0.6
-/// Github: https://github.com/stackhou/SwiftProgressHUD
+/// Github地址: https://github.com/stackhou/SwiftProgressHUD
 
 private let yj_topBarTag: Int = 1001
 private let yj_showHUDBackColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
