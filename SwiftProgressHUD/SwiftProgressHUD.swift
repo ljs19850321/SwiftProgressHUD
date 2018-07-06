@@ -278,7 +278,7 @@ class SwiftProgress: NSObject {
     static func showText(_ text: String, autoClear: Bool=true, autoClearTime: Int = 2) -> UIWindow {
         let window = UIWindow()
         window.backgroundColor = hudBackgroundColor
-        window.rootViewController = UIViewController()
+        window.rootViewController = JSStateBarViewController()
         let mainView = UIView()
         mainView.layer.cornerRadius = 12
         mainView.backgroundColor = yj_showHUDBackColor
@@ -392,7 +392,7 @@ class SwiftProgress: NSObject {
     }
     
     /// Repair window has not been removed
-    static func hideNotice(_ sender: AnyObject) {
+    @objc static func hideNotice(_ sender: AnyObject) {
         if let window = sender as? UIWindow {
             
             if let v = window.subviews.first {
@@ -519,5 +519,12 @@ class SwiftProgressSDK {
 extension UIWindow{
     func hide(){
         SwiftProgress.hideNotice(self)
+    }
+}
+
+class JSStateBarViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return  UIApplication.shared.statusBarStyle
     }
 }
